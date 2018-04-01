@@ -392,6 +392,7 @@
     <Content Include="Views\QLDienKe\Insert.cshtml" />
     <Content Include="Views\QLKhachHang\Insert.cshtml" />
     <Content Include="Views\QLGiaDien\Index.cshtml" />
+    <Content Include="Views\QLGiaDien\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

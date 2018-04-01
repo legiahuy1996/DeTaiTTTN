@@ -19,5 +19,20 @@ namespace bananhhao.Controllers
              List<giadien>lst =db.giadiens.ToList();
             return View(lst);
         }
+        [HttpGet]
+        public ActionResult Edit()
+        {
+            
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Edit(giadien gd)
+        {
+            giadien a = db.giadiens.SingleOrDefault(x => x.mabac == gd.mabac);
+            a = gd;
+            db.SubmitChanges();
+            Session["ThongBao"] = "001";
+            return RedirectToAction("Index");
+        }
     }
 }
