@@ -148,6 +148,8 @@
     <Compile Include="Controllers\QLDienKeController.cs" />
     <Compile Include="Controllers\QLGiaDienController.cs" />
     <Compile Include="Controllers\QLKhachHangController.cs" />
+    <Compile Include="Controllers\QLTinhTienDienController.cs" />
+    <Compile Include="Controllers\TraCuuController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -393,9 +395,11 @@
     <Content Include="Views\QLKhachHang\Insert.cshtml" />
     <Content Include="Views\QLGiaDien\Index.cshtml" />
     <Content Include="Views\QLGiaDien\Edit.cshtml" />
+    <Content Include="Views\TraCuu\TimKiemKhachHang.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\QLTinhTienDien\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
