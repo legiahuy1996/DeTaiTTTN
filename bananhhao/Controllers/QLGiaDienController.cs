@@ -30,7 +30,7 @@ namespace bananhhao.Controllers
         {
             if (db.giadiens.SingleOrDefault(x => x.mabac == gd.mabac) !=null)
             {
-                Session["ThongBao"] = "Mã bậc đã tồn tại";
+                Session["ThongBao"] = "Mã bậc đã tồn tại aaaaaaa";
                 return View("Insert");
             }
             //else if (dk.madk.Length != 8 || dk.makh.Length == 0 || dk.ngaysx > DateTime.Now || dk.ngaylap > DateTime.Now || dk.ngaysx >= dk.ngaylap || dk.mota == null)
