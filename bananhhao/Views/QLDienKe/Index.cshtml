@@ -1,0 +1,69 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using bananhhao.Models
+@model List<dienke>
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Quản lý điện kế</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Danh sách điện kế
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body ">
+                <table id="khachhang" width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                    <thead>
+                        <tr>
+                            <th>Mã điện kế</th>
+                            <th>Tên Khách hàng</th>
+                            <th>Ngày sản xuất</th>
+                            <th>Ngày lập</th>
+                            <th>Mô tả</th>
+                            <th>Trạng Thái</th>
+                            <th>
+                                <a href="#">Xóa</a> -
+                                <a href="suakhachhang.html">Sửa</a>
+                            </th>
+                        </tr>
+                        @foreach (dienke dk in Model)
+                        {
+                        <tr>
+                            <td class="tdNumber">@dk.madk</td>
+                            <td class="tdCharacter">@dk.khachhang.tenkh</td>
+                            <td class="tdNumber">@dk.ngaysx.Value.ToString(string.Format("dd/MM/yyyy"))</td>
+                            <td class="tdNumber">@dk.ngaylap.Value.ToString(string.Format("dd/MM/yyyy"))</td>
+                            <td class="tdCharacter">@dk.mota</td>
+                            @if (dk.trangthai == true)
+    {
+                        <td class="tdCharacter">Còn sử dụng</td>
+}
+else
+{
+                        <td class="tdCharacter">Không còn sử dụng</td>
+}
+
+
+                            <td><a href="@Url.Action("Delete",new {madk = dk.madk })" class="btn btn-danger">Xoá</a><a href="@Url.Action("Edit",new {id = dk.madk })" class="btn btn-warning">Sửa</a></td>
+                        </tr>
+                        }
+                    </thead>
+                    <tbody></tbody>
+                </table>
+                <!-- /.table-responsive -->
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+

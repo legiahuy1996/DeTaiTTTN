@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using bananhhao.Models;
+@model khachhang
+
+@using (Html.BeginForm("Edit", "QLKhachHang", FormMethod.Post))
+{
+
+    <div class="form-group">
+        <label for="pwd"> Tên Khách Hàng:</label>
+        <input name="tenkh" type="text" class="form-control" value="@Model.tenkh" required>
+        <input name="makh" type="text" hidden="hidden" value="@Model.makh" />
+    </div>
+
+    <div class="form-group">
+        <label for="pwd">Địa Chỉ:</label>
+        <input type="text" class="form-control" name="diachi" value="@Model.diachi" required>
+    </div>
+    <div class="form-group">
+        <label for="pwd">Điện thoại:</label>
+        <input type="number" class="form-control" name="dienthoai" value="@Model.dt">
+    </div>
+    <div class="form-group">
+        <label for="pwd"> CMND:</label>
+        <input type="number" class="form-control" minlength="9" maxlength="9" name="cmnd" value="@Model.cmnd">
+    </div>
+    <button type="submit" class="btn btn-default"> Submit</button>
+
+}

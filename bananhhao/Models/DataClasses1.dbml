@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="thuctap" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-54Q0QQH\HUY;Initial Catalog=thuctap;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="thuctapConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.cthoadon" Member="cthoadons">
+    <Type Name="cthoadon">
+      <Column Name="mahd" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="madk" Type="System.String" DbType="VarChar(8) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="dntt" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="dongia" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Association Name="dienke_cthoadon" Member="dienke" ThisKey="madk" OtherKey="madk" Type="dienke" IsForeignKey="true" />
+      <Association Name="hoadon_cthoadon" Member="hoadon" ThisKey="mahd" OtherKey="mahd" Type="hoadon" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.khachhang" Member="khachhangs">
+    <Type Name="khachhang">
+      <Column Name="makh" Type="System.String" DbType="VarChar(13) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="tenkh" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="diachi" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="dt" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="cmnd" Type="System.String" DbType="VarChar(9)" CanBeNull="true" />
+      <Association Name="khachhang_dienke" Member="dienkes" ThisKey="makh" OtherKey="makh" Type="dienke" />
+    </Type>
+  </Table>
+  <Table Name="dbo.dienke" Member="dienkes">
+    <Type Name="dienke">
+      <Column Name="madk" Type="System.String" DbType="VarChar(8) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="makh" Type="System.String" DbType="VarChar(13)" CanBeNull="true" />
+      <Column Name="ngaysx" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ngaylap" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="mota" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="trangthai" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="dienke_cthoadon" Member="cthoadons" ThisKey="madk" OtherKey="madk" Type="cthoadon" />
+      <Association Name="khachhang_dienke" Member="khachhang" ThisKey="makh" OtherKey="makh" Type="khachhang" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.giadien" Member="giadiens">
+    <Type Name="giadien">
+      <Column Name="mabac" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="tenbac" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="tusokw" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="densokw" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="dongia" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="ngayapdung" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.hoadon" Member="hoadons">
+    <Type Name="hoadon">
+      <Column Name="mahd" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ky" Type="System.String" DbType="VarChar(7)" CanBeNull="true" />
+      <Column Name="tungay" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="denngay" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="chisodau" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="chisocuoi" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="tongthanhtien" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="ngaylaphd" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="tinhtrang" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="hoadon_cthoadon" Member="cthoadons" ThisKey="mahd" OtherKey="mahd" Type="cthoadon" />
+    </Type>
+  </Table>
+</Database>
