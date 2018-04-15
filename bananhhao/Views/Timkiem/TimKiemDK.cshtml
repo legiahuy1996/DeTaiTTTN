@@ -1,0 +1,55 @@
+﻿@model IEnumerable<bananhhao.Models.dienke>
+
+@{
+    ViewBag.Title = "TimKiemDienKe";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>TimKiemDienKe</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.makh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ngaysx)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ngaylap)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.mota)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.makh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ngaysx)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ngaylap)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.mota)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.madk }) |
+                @Html.ActionLink("Details", "Details", new { id = item.madk }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.madk })
+            </td>
+        </tr>
+    }
+
+</table>
+
+

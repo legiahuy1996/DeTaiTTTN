@@ -1,0 +1,18 @@
+﻿@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using bananhhao.Models;
+@model dienke
+
+@using (Html.BeginForm("TraCuuDienKe", "TraCuu", FormMethod.Post))
+{
+
+    <div class="form-group">
+        <label for="pwd"> Mã Dk:</label>
+        <input name="madk" type="text" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-default"> Submit</button>
+
+}
