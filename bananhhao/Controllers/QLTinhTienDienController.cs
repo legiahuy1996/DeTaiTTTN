@@ -14,9 +14,9 @@ namespace bananhhao.Controllers
         {
             db = new DataClasses1DataContext();
         }
-        public ActionResult Index(string makh,double sokwh)
+        public ActionResult Index()
         {
-            List<khachhang> lst = db.khachhangs.Where(x=>x.makh == makh).ToList();
+            List<khachhang> lst = db.khachhangs.ToList();
             return View(lst);
         }
         public double tinhtiendien(double sokwh)
