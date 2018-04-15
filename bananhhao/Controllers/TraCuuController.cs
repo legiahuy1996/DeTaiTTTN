@@ -58,11 +58,5 @@ namespace bananhhao.Controllers
             }
             return View(kq);
         }
-        [HttpGet]
-        public ActionResult TheoDoiNoTienDien()
-        {
-            var kq = db.getDSKHChuaDongTien().ToList();
-            return View(kq);
-        }
     }
 }
