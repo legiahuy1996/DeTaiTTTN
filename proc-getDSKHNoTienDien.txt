@@ -1,0 +1,9 @@
+CREATE PROC getDSKHChuaDongTien
+AS
+BEGIN
+	SELECT * FROM dbo.khachhang (NOLOCK) a 
+	LEFT JOIN dbo.dienke (NOLOCK) b ON b.makh = a.makh
+	LEFT JOIN dbo.cthoadon (NOLOCK) c ON c.madk = b.madk
+	LEFT JOIN dbo.hoadon (NOLOCK) d ON d.mahd = c.mahd
+	WHERE d.tinhtrang = '0'
+END
