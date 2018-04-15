@@ -1,0 +1,103 @@
+ALTER  PROC [dbo].[laphoadon]
+@diennangtieuthu INT =NULL,
+@tiendien FLOAT=NULL,
+@makh	VARCHAR(13)=NULL,
+@mahd	VARCHAR(10)=NULL,
+@chisocuoi INT 
+AS 
+BEGIN
+	DECLARE @chisodau INT,
+			@ky VARCHAR(10),
+			@madk VARCHAR(8),
+			@returnmess INT 
+			
+	
+	
+	SET @returnmess =''
+    SELECT @madk = madk FROM dbo.khachhang a 
+	JOIN dbo.dienke b ON b.makh = a.makh
+	WHERE a.makh = @makh
+
+	
+	SELECT @ky = FORMAT(GETDATE(), 'MM/yyyy') 
+	
+	SELECT @chisodau = chisocuoi FROM dbo.hoadon WHERE DATEPART(MONTH,ngaylaphd) = DATEPART(MONTH,GETDATE()) -1
+
+	IF (@chisodau IS NOT NULL)
+		BEGIN
+			IF(@mahd IN (SELECT mahd FROM dbo.hoadon ))
+			BEGIN
+				SET @returnmess = 1
+				RETURN @returnmess
+            END 
+			INSERT INTO dbo.hoadon
+			        ( mahd ,
+			          ky ,
+			          tungay ,
+			          denngay ,
+			          chisodau ,
+			          chisocuoi ,
+			          tongthanhtien ,
+			          ngaylaphd ,
+			          tinhtrang
+			        )
+			VALUES  ( @mahd , -- mahd - varchar(10)
+			          @ky , -- ky - varchar(7)
+			         GETDATE() , -- tungay - datetime
+						EOMONTH(GETDATE()) , -- denngay - datetime
+			          @chisodau , -- chisodau - int
+			          @chisocuoi , -- chisocuoi - int
+			          @tiendien , -- tongthanhtien - money
+			          GETDATE() , -- ngaylaphd - datetime
+			          0  -- tinhtrang - bit
+			        )
+					INSERT INTO dbo.cthoadon
+					        ( mahd, madk, dntt, dongia )
+					VALUES  ( @mahd, -- mahd - varchar(10)
+					          @madk, -- madk - varchar(8)
+					          @diennangtieuthu, -- dntt - int
+					          @tiendien  -- dongia - money
+					          )
+				SET @returnmess = 2
+				RETURN @returnmess
+		END 
+	ELSE
+		BEGIN
+			SET @chisodau =0
+			IF(@mahd IN (SELECT mahd FROM dbo.hoadon ))
+			BEGIN
+				SET @returnmess = 1
+				RETURN @returnmess
+            END 
+			INSERT INTO dbo.hoadon
+			        ( mahd ,
+			          ky ,
+			          tungay ,
+			          denngay ,
+			          chisodau ,
+			          chisocuoi ,
+			          tongthanhtien ,
+			          ngaylaphd ,
+			          tinhtrang
+			        )
+			VALUES  ( @mahd , -- mahd - varchar(10)
+			          @ky , -- ky - varchar(7)
+			          GETDATE() , -- tungay - datetime
+						EOMONTH(GETDATE()) , -- denngay - datetime
+			          @chisodau , -- chisodau - int
+			          @chisocuoi , -- chisocuoi - int
+			          @tiendien , -- tongthanhtien - money
+			          GETDATE() , -- ngaylaphd - datetime
+			          0  -- tinhtrang - bit
+			        )
+					INSERT INTO dbo.cthoadon
+					        ( mahd, madk, dntt, dongia )
+					VALUES  ( @mahd, -- mahd - varchar(10)
+					          @madk, -- madk - varchar(8)
+					          @diennangtieuthu, -- dntt - int
+					          @tiendien  -- dongia - money
+					          )
+							  	SET @returnmess =2
+				RETURN @returnmess
+		END  
+END 
