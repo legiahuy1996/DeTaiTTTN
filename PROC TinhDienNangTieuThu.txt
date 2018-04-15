@@ -1,0 +1,17 @@
+alter PROC TinhDienNangTieuThu
+@chisocuoi int
+AS
+	DECLARE @chisodau INT,@total float
+	
+	SELECT @chisodau = chisocuoi FROM dbo.hoadon WHERE DATEPART(MONTH,ngaylaphd) = DATEPART(MONTH,GETDATE()) -1
+	IF (@chisodau IS NOT NULL)
+		BEGIN
+			SET @total = @chisocuoi - @chisodau
+			RETURN @total
+		END  
+	ELSE 
+		BEGIN 
+				SET @total = @chisocuoi
+				RETURN @total
+		END 
+		GO 
