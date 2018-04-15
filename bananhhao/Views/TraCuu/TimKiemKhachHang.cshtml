@@ -1,52 +1,18 @@
-﻿@model IEnumerable<bananhhao.Models.khachhang>
-
-@{
-    ViewBag.Title = "TimKiemKhachHang";
+﻿@{
+    ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@using bananhhao.Models;
+@model khachhang
 
-<h2>TimKiemKhachHang</h2>
+@using (Html.BeginForm("TimKiemKhachHang","TraCuu",FormMethod.Post))
+{
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.tenkh)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.diachi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.dt)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.cmnd)
-        </th>
-        <th></th>
-    </tr>
+    <div class="form-group">
+        <label for="pwd"> Mã Khách Hàng:</label>
+        <input name="makh" type="text"   class="form-control" />
+    </div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.tenkh)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.diachi)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.dt)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.cmnd)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.makh }) |
-            @Html.ActionLink("Details", "Details", new { id=item.makh }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.makh })
-        </td>
-    </tr>
+    <button type="submit" class="btn btn-default"> Submit</button>
+
 }
-
-</table>
