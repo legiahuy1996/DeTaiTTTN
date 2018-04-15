@@ -31,7 +31,7 @@ namespace bananhhao.Controllers
             if (result > 0)
             {
                 var kq = db.khachhangs.SingleOrDefault(x => x.makh == makh);
-                return RedirectToAction("TimKiemKH", "timkiemkh", new { @khachhang = kq.makh });
+                return RedirectToAction("TimKiemKH", "Timkiem", new { @khachhang = kq.makh });
             }    
             else
             {
@@ -44,19 +44,23 @@ namespace bananhhao.Controllers
         [HttpGet]
         public ActionResult TraCuuDienKe()
         {
-            var kq = db.dienkes.ToList();
-            return View(kq);
+            //var kq = db.dienkes.ToList();
+            return View();
         }
         [HttpPost]
         public ActionResult TraCuuDienKe(string madk)
         {
-            var kq = db.dienkes.Where(x => x.madk == madk).ToList();
-            if(kq == null)
+            var result = db.dienkes.Count(x => x.madk == madk);
+            if (result > 0)
             {
-                Session["ThongBao"] = "Không tồn tại điện kế nào trong đây!";
-                return View("TraCuuDienKe");
+                var kq = db.dienkes.SingleOrDefault(x => x.madk == madk);
+                return RedirectToAction("TimKiemDK", "Timkiem", new { @dienke = kq.madk });
             }
-            return View(kq);
+            else
+            {
+                Session["ThongBao"] = "Không có nhân viên nào trong đây!";
+                return View();
+            }
         }
     }
 }
