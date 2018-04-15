@@ -21,19 +21,25 @@ namespace bananhhao.Controllers
         [HttpGet]
         public ActionResult TimKiemKhachHang()
         {
-            var kq = db.khachhangs.ToList();
-            return View(kq);
+            //;var kq = db.khachhangs.ToList();
+            return View();
         }
         [HttpPost]
         public ActionResult TimKiemKhachHang(string makh)
         {
-            var kq = db.khachhangs.Where(x => x.makh == makh).ToList();
-            if(kq == null)
+            var result = db.khachhangs.Count(x => x.makh == makh);
+            if (result > 0)
+            {
+                var kq = db.khachhangs.SingleOrDefault(x => x.makh == makh);
+                return RedirectToAction("TimKiemKH", "timkiemkh", new { @khachhang = kq.makh });
+            }    
+            else
             {
                 Session["ThongBao"] = "Không có nhân viên nào trong đây!";
-                return View("TimKiemKhachHang");
-            }
-            return View(kq);
+                return View();
+            }    
+                
+            
         }
         [HttpGet]
         public ActionResult TraCuuDienKe()
