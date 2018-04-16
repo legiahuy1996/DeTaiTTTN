@@ -7,26 +7,37 @@
 <table id="khachhang" width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
     <thead>
         <tr>
-            <th>Mã Hoá Đơn</th>
+            <th>Mã hoá đơn</th>
             <th>Mã Khách Hàng</th>
-            <th>Điện Năng Tiêu Thụ(kWh)</th>
+            <th>Điện năng tiêu thụ</th>
             <th>Tổng tiền</th>
-        </tr>   
+
+
+
+        </tr>
         @using (Html.BeginForm("LapHoaDon", "QLHoaDon", FormMethod.Post))
         {
-            <tr style="text-align:center">
 
-
-                <td><input type="text" name="mahd" required/></td>
-                <td><input type="text" value="@ViewBag.MaKH" name="makh" hidden="hidden" /><label>@ViewBag.MaKH</label></td>
-
-                <td><input type="text" value="@ViewBag.diennangtieuthu" name="diennangtieuthu" hidden="hidden" /><label>@ViewBag.diennangtieuthu</label></td>
-                <td><input type="text" value="@ViewBag.TienDien" name="tiendien" hidden="hidden" /><label>@ViewBag.TienDien</label></td>
-                <td><input type="text" value="@ViewBag.chisocuoi" name="chisocuoi" hidden="hidden" /></td>
-                <button style="margin-left:45%" type="submit" class="btn btn-success">Lập hoá đơn</button>
-
-
+            <tr>
+                <td>
+                    <label>Mã hoá đơn</label><input type="text" name="mahd" />
+                </td>
+                <td>
+                    <label>@ViewBag.makh</label><input type="text" value="@ViewBag.makh" name="makh" hidden="hidden" />
+                </td>
+                <td>
+                    <label>@ViewBag.diennangtieuthu</label><input type="text" value="@ViewBag.diennangtieuthu" name="diennangtieuthu" hidden="hidden" />
+                </td>
+                <td>
+                    <label>@ViewBag.tongsotien</label><input type="text" value="@ViewBag.tongsotien" name="tiendien" hidden="hidden" />
+                    <input type="text" value="@ViewBag.chisocuoi" name="chisocuoi" hidden="hidden" />
+                </td>
+                <td><button type="submit" class="btn btn-primary">Lập hoá đơn</button></td>
             </tr>
+            
         }
+
+
     </thead>
+    <tbody></tbody>
 </table>

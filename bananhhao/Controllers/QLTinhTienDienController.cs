@@ -19,6 +19,20 @@ namespace bananhhao.Controllers
             List<khachhang> lst = db.khachhangs.ToList();
             return View(lst);
         }
+        [HttpPost]
+        public ActionResult TinhTien(string makh,int chisocuoi)
+        {
+            double diennangtieuthu = db.TinhDienNangTieuThu(chisocuoi);
+            double tongsotien = tinhtiendien(chisocuoi);
+
+            ViewBag.diennangtieuthu = diennangtieuthu;
+            ViewBag.tongsotien = tongsotien * 1000;
+            ViewBag.makh = makh;
+            ViewBag.chisocuoi = chisocuoi;
+            return View();
+
+
+        }
         public double tinhtiendien(double sokwh)
         {
             Double sotien;
