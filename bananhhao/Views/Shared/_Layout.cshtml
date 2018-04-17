@@ -113,10 +113,10 @@
                             </a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="@Url.Action("Index","QLDienKe")"">Danh Sách</a>
+                                    <a href="@Url.Action("Index","QLDienKe")">Danh Sách</a>
                                 </li>
                                 <li>
-                                    <a href="@Url.Action("Insert","QLDienKe")"">Thêm Điện Kế</a>
+                                    <a href="@Url.Action("Insert","QLDienKe")">Thêm Điện Kế</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -146,7 +146,22 @@
                                     <a href="@Url.Action("Index","QLGiaDien")">Danh Sách</a>
                                 </li>
                                 <li>
-                                    <a href="themgiadien.html">Thêm Điện Kế</a>
+                                    <a href="@Url.Action("Insert","QLGiaDien")">Thêm Điện Kế</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-bar-chart-o fa-fw"></i> Tra Cứu Thông tin
+                                <span class="fa arrow"></span>
+                            </a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="@Url.Action("TimKiemKhachHang","TraCuu")">Tìm Kiếm Khách Hàng</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("TraCuuDienKe","TraCuu")">Tìm Kiếm Điện kế</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
