@@ -1,66 +1,40 @@
-﻿@model bananhhao.Models.khachhang
-
-@{
+﻿@{
     ViewBag.Title = "Insert";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@using bananhhao.Models;
+@model khachhang
 
 
-<h2>Thêm khách hàng</h2>
-
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("Insert", "QLKhachHang", FormMethod.Post))
 {
-    @Html.AntiForgeryToken()
-    
-<div class="form-horizontal">
-
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <h4>Thông tin khách hàng</h4>
-    <div class="form-group">
-
-        <div class="col-md-10">
-            <label for="email">Mã Khách Hàng:</label>
-            @Html.EditorFor(model => model.tenkh, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.tenkh, "", new { @class = "text-danger" })
-        </div>
-    </div>
 
     <div class="form-group">
-
-        <div class="col-md-10">
-            <label for="pwd">Địa Chỉ:</label>
-            @Html.EditorFor(model => model.diachi, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.diachi, "", new { @class = "text-danger" })
-        </div>
+        <label for="pwd"> Mã Khách hàng:</label>
+        <input name="makh" type="text" class="form-control" value="" max="13" min="13" required />
     </div>
+    <div class="form-group">
+        <label for="pwd"> Tên Khách Hàng:</label>
+        <input name="tenkh" type="text" class="form-control" value="" required>
+    </div>
+
 
     <div class="form-group">
-
-        <div class="col-md-10">
-            <label for="pwd">Điện thoại:</label>
-            @Html.EditorFor(model => model.dt, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.dt, "", new { @class = "text-danger" })
-        </div>
+        <label for="pwd">Địa Chỉ:</label>
+        <input type="text" class="form-control" name="diachi" value="">
     </div>
-
     <div class="form-group">
-
-        <div class="col-md-10">
-            <label for="pwd">CMND:</label>
-            @Html.EditorFor(model => model.cmnd, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.cmnd, "", new { @class = "text-danger" })
-        </div>
+        <label for="pwd">Điện Thoại:</label>
+        <input type="text" class="form-control nhapso" max="11" min="10" name="dt" value="">
     </div>
-
     <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Create" class="btn btn-default" />
-        </div>
+        <label for="pwd">CMND:</label>
+        <input type="text" class="form-control nhapso" max="9" min="9" name="cmnd" value="">
     </div>
-</div>
+    <button type="submit" class="btn btn-default"> Submit</button>
+
 }
+<script>
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+</script>
+

@@ -1,97 +1,45 @@
-﻿@model bananhhao.Models.giadien
-@{
+﻿@{
     ViewBag.Title = "Insert";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@section scripts{
+@using bananhhao.Models;
+@model giadien
 
 
-    <script src="~/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
-    <script>
-        $(function () {
-            $("#tusokw").keydown(function (e) {
-                if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
-                    // Allow: Ctrl/cmd+A
-                    (e.keyCode == 65 && (e.ctrlKey === true || e.metaKey === true)) ||
-                    // Allow: Ctrl/cmd+C
-                    (e.keyCode == 67 && (e.ctrlKey === true || e.metaKey === true)) ||
-                    // Allow: Ctrl/cmd+X
-                    (e.keyCode == 88 && (e.ctrlKey === true || e.metaKey === true)) ||
-                    // Allow: home, end, left, right
-                    (e.keyCode >= 35 && e.keyCode <= 39)) {
-                    // let it happen, don't do anything
-                    return;
-                }
-                // Ensure that it is a number and stop the keypress
-                if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
-                    e.preventDefault();
-                }
-            })
-            $("#ngayapdung").datepicker();
-        });
-    </script>
-}
-<h2>Thêm Giá điện</h2>
-
-
-@using (Html.BeginForm())
+@using (Html.BeginForm("Insert", "QLGiaDien", FormMethod.Post))
 {
-    @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
+    <div class="form-group">
+        <label for="pwd"> Mã bậc:</label>
+        <input name="mabac" type="text" class="form-control" value="" required/>
+    </div>
+    <div class="form-group">
+        <label for="pwd"> Tên bậc:</label>
+        <input name="tenbac" type="text" class="form-control" value="" required>
+    </div>
+    
 
-        <hr />
-        <h4>Thông tin Giá điện</h4>
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <!--<label for="email">Mã Điện Kế:</label>-->
-        <form action="/action_page.php">
-            <label for="email">Mã Bậc:</label>
-            <div class="form-group">
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.mabac, new { htmlAttributes = new { @class = "form-control" } })
-                </div>
-            </div>
-            <label for="email">Tên Bậc:</label>
-            <div class="form-group">
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.tenbac, new { htmlAttributes = new { @class = "form-control" } })
-                </div>
-            </div>
-            <label for="email">Từ số kw:</label>
-            <div class="form-group">
+    <div class="form-group">
+        <label for="pwd">Từ số KW:</label>
+        <input type="text" class="form-control nhapso"  name="tusokw" value="" >
+    </div>
+    <div class="form-group">
+        <label for="pwd">Đến Số KW:</label>
+        <input type="text" class="form-control nhapso"  name="densokw" value="">
+    </div>
+    <div class="form-group">
+        <label for="pwd">Đơn giá KW:</label>
+        <input type="text" class="form-control nhapso" name="dongia" value="">
+    </div>
 
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.tusokw, new { htmlAttributes = new { @class = "form-control", @id = "tusokw" } })
-                    @Html.ValidationMessageFor(model => model.tusokw, "", new { @class = "text-danger" })
-                </div>
-            </div>
-           
-            <label for="email">Đến Số kw:</label>
-            <div class="form-group">
+    <div class="form-group">
+        <label for="pwd"> Ngày Áp Dụng:</label>
+        <input type="date" class="form-control" name="ngayapdung" value="">
+    </div>
+    <button type="submit" class="btn btn-default"> Submit</button>
 
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.densokw, new { htmlAttributes = new { @class = "form-control", @id = "tusokw" } })
-                    @Html.ValidationMessageFor(model => model.densokw, "", new { @class = "text-danger" })
-                </div>
-            </div>
-            <label for="email">Đơn Giá:</label>
-            <div class="form-group">
-
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.dongia, new { htmlAttributes = new { @class = "form-control", @id = "tusokw" } })
-                    @Html.ValidationMessageFor(model => model.dongia, "", new { @class = "text-danger" })
-                </div>
-            </div>
-            <label for="email">Ngày Áp Dụng:</label>
-            <div class="form-group">
-
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.ngayapdung, new { htmlAttributes = new { @class = "form-control", @id = "ngayapdung" } })
-                    @Html.ValidationMessageFor(model => model.ngayapdung, "", new { @class = "text-danger" })
-                </div>
-            </div>
-            <button type="submit" class="btn btn-default">Submit</button>
-        </form>
-        </div>
 }
+<script>
+    
+</script>
 

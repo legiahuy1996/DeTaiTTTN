@@ -56,18 +56,63 @@ namespace bananhhao.Controllers
 
         }
         [HttpGet]
-        public ActionResult Edit()
+        public ActionResult Edit(int id)
         {
-            
-            return View();
+            giadien kh = db.giadiens.SingleOrDefault(x => x.mabac == id);
+            return View(kh);
         }
         [HttpPost]
-        public ActionResult Edit(giadien gd)
+        public ActionResult Edit(int mabac, string tenbac, int tusokw, int densokw, decimal dongia,DateTime ngayapdung)
         {
-            giadien a = db.giadiens.SingleOrDefault(x => x.mabac == gd.mabac);
-            a = gd;
-            db.SubmitChanges();
-            Session["ThongBao"] = "001";
+            giadien save = new giadien { mabac = mabac, tenbac = tenbac, tusokw = tusokw, densokw = densokw, dongia = dongia, ngayapdung=ngayapdung };
+            giadien check = db.giadiens.SingleOrDefault(x => x.mabac == mabac);
+            try
+            {
+
+                if (mabac == 0 || tenbac == null || tusokw == 0 || densokw == 0|| dongia == 0 && ngayapdung==null)
+                {
+                    Session["ThongBao"] = "Có lỗi khi sửa giá điện";
+                    return RedirectToAction("Edit", new { id = mabac });
+                }
+                /*else if (check != null)
+                {
+                    Session["ThongBao"] = "Số chứng minh đã tồn tại!";
+                    return RedirectToAction("Edit", new { id = makh });
+                }*/
+                giadien kh = db.giadiens.SingleOrDefault(x => x.mabac == mabac);
+
+                kh.tenbac = tenbac;
+                kh.tusokw = tusokw;
+                kh.densokw = densokw;
+                kh.dongia = dongia;
+                kh.ngayapdung = ngayapdung;
+                db.SubmitChanges();
+                Session["ThongBao"] = "002";
+            }
+            catch (Exception e)
+            {
+                Session["ThongBao"] = e.Message;
+            }
+            return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public ActionResult Delete(int mabac)
+        {
+            try
+            {
+                giadien kh = db.giadiens.SingleOrDefault(x => x.mabac == mabac);
+
+                db.giadiens.DeleteOnSubmit(kh);
+                db.SubmitChanges();
+                Session["ThongBao"] = "003";
+            }
+            catch (Exception e)
+            {
+                Session["ThongBao"] = e.Message;
+            }
+
+
+
             return RedirectToAction("Index");
         }
     }
