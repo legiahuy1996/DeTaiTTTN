@@ -19,6 +19,7 @@ namespace bananhhao.Controllers
         {
             return View();
         }
+        [HttpPost]
         public ActionResult LapHoaDon(string makh,int diennangtieuthu,double tiendien,int chisocuoi,string mahd)
         {
             int mess = db.laphoadon(diennangtieuthu, tiendien, makh, mahd, chisocuoi);

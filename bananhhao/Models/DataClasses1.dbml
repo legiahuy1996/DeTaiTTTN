@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="thuctap" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=.;Initial Catalog=thuctap;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="thuctapConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-54Q0QQH\HUY;Initial Catalog=thuctap;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="thuctapConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.cthoadon" Member="cthoadons">
     <Type Name="cthoadon">
       <Column Name="mahd" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -56,6 +56,18 @@
       <Association Name="hoadon_cthoadon" Member="cthoadons" ThisKey="mahd" OtherKey="mahd" Type="cthoadon" />
     </Type>
   </Table>
+  <Function Name="dbo.TinhDienNangTieuThu" Method="TinhDienNangTieuThu">
+    <Parameter Name="chisocuoi" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.laphoadon" Method="laphoadon">
+    <Parameter Name="diennangtieuthu" Type="System.Int32" DbType="Int" />
+    <Parameter Name="tiendien" Type="System.Double" DbType="Float" />
+    <Parameter Name="makh" Type="System.String" DbType="VarChar(13)" />
+    <Parameter Name="mahd" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="chisocuoi" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
   <Function Name="dbo.getDSKHChuaDongTien" Method="getDSKHChuaDongTien">
     <ElementType Name="getDSKHChuaDongTienResult">
       <Column Name="makh" Type="System.String" DbType="VarChar(13) NOT NULL" CanBeNull="false" />

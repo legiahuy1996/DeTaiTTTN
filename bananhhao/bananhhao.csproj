@@ -142,6 +142,7 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="Controllers\QLHoaDonController.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -396,10 +397,11 @@
     <Content Include="Views\QLGiaDien\Index.cshtml" />
     <Content Include="Views\QLGiaDien\Edit.cshtml" />
     <Content Include="Views\TraCuu\TimKiemKhachHang.cshtml" />
+    <Content Include="Views\QLTinhTienDien\Index.cshtml" />
+    <Content Include="Views\QLTinhTienDien\TinhTien.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\QLTinhTienDien\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

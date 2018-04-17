@@ -48,7 +48,7 @@ namespace bananhhao.Models
     #endregion
 		
 		public DataClasses1DataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["thuctapConnectionString"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["thuctapConnectionString1"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -115,6 +115,20 @@ namespace bananhhao.Models
 			{
 				return this.GetTable<hoadon>();
 			}
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.TinhDienNangTieuThu")]
+		public int TinhDienNangTieuThu([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> chisocuoi)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), chisocuoi);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.laphoadon")]
+		public int laphoadon([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> diennangtieuthu, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Float")] System.Nullable<double> tiendien, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(13)")] string makh, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(10)")] string mahd, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> chisocuoi)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), diennangtieuthu, tiendien, makh, mahd, chisocuoi);
+			return ((int)(result.ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.getDSKHChuaDongTien")]
