@@ -117,6 +117,13 @@ namespace bananhhao.Models
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.getDSKHChuaDongTien")]
+		public ISingleResult<getDSKHChuaDongTienResult> getDSKHChuaDongTien()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<getDSKHChuaDongTienResult>)(result.ReturnValue));
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.TinhDienNangTieuThu")]
 		public int TinhDienNangTieuThu([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> chisocuoi)
 		{
@@ -129,13 +136,6 @@ namespace bananhhao.Models
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), diennangtieuthu, tiendien, makh, mahd, chisocuoi);
 			return ((int)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.getDSKHChuaDongTien")]
-		public ISingleResult<getDSKHChuaDongTienResult> getDSKHChuaDongTien()
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-			return ((ISingleResult<getDSKHChuaDongTienResult>)(result.ReturnValue));
 		}
 	}
 	

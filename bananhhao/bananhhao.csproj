@@ -393,12 +393,13 @@
     <Content Include="Views\Error\Index.cshtml" />
     <Content Include="Views\QLDienKe\Index.cshtml" />
     <Content Include="Views\QLDienKe\Insert.cshtml" />
-    <Content Include="Views\QLKhachHang\Insert.cshtml" />
     <Content Include="Views\QLGiaDien\Index.cshtml" />
     <Content Include="Views\QLGiaDien\Edit.cshtml" />
     <Content Include="Views\TraCuu\TimKiemKhachHang.cshtml" />
     <Content Include="Views\QLTinhTienDien\Index.cshtml" />
     <Content Include="Views\QLTinhTienDien\TinhTien.cshtml" />
+    <Content Include="Views\QLKhachHang\Insert.cshtml" />
+    <Content Include="Views\QLDienKe\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -55,5 +55,63 @@ namespace bananhhao.Controllers
             }
           
         }
+        [HttpGet]
+        public ActionResult Edit(string id)
+        {
+            dienke dk = db.dienkes.SingleOrDefault(x => x.madk == id);
+            return View(dk);
+        }
+    
+        public ActionResult Delete(string madk)
+        {
+            try
+            {
+                db.dienkes.DeleteOnSubmit(db.dienkes.SingleOrDefault(x => x.madk == madk));
+                db.SubmitChanges();
+                return RedirectToAction("Index"); 
+            }catch(Exception e)
+            {
+                Session["ThongBao"] = e.Message;
+                return RedirectToAction("Index");
+            }
+          
+            
+        }
+        [HttpPost]
+        public ActionResult Edit(dienke dk)
+        {
+            if (db.dienkes.SingleOrDefault(x => x.madk == dk.madk) != null)
+            {
+                if (dk.madk.Length != 8 || dk.makh.Length == 0 || dk.ngaysx > DateTime.Now || dk.ngaylap > DateTime.Now || dk.ngaysx >= dk.ngaylap || dk.mota == null)
+                {
+                    Session["ThongBao"] = "Thông tin nhập ko hợp lệ!";
+                    return RedirectToAction("Edit", new { id = dk.madk });
+                }
+                else
+                {
+                    try
+                    {
+                        dienke core = db.dienkes.SingleOrDefault(x => x.madk == dk.madk);
+                        core.makh = dk.makh;
+                        core.mota = dk.mota;
+                        core.ngaylap = dk.ngaylap;
+                        core.ngaysx = dk.ngaysx;
+                        core.trangthai = dk.trangthai;
+                        db.SubmitChanges();
+                        Session["ThongBao"] = "002";
+                    }
+                    catch (Exception e)
+                    {
+                        Session["ThongBao"] = e.Message;
+                        return RedirectToAction("Edit", new { id = dk.madk });
+                    }
+                    return RedirectToAction("Index");
+                }
+            }
+            else
+                return RedirectToAction("Index");
+
+
+        }
     }
 }

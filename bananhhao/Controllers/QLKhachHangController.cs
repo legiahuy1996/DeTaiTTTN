@@ -94,6 +94,7 @@ namespace bananhhao.Controllers
                 kh.diachi = diachi;
                 kh.dt = dienthoai;
                 kh.cmnd = cmnd;
+
                 db.SubmitChanges();
                 Session["ThongBao"] = "002";
             }
