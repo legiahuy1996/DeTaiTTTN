@@ -12,7 +12,7 @@
 
     <div class="form-group">
         <label for="pwd"> Mã Khách hàng:</label>
-        <input name="makh" type="text" class="form-control" value="" max="13" min="13" required />
+        <input name="makh" type="text" class="form-control nhapso" value="" minlength="13" maxlength="13" required pattern=".{0}{13,}" title="Nhap ma it hon 13 ki tu" />
     </div>
     <div class="form-group">
         <label for="pwd"> Tên Khách Hàng:</label>
@@ -26,11 +26,11 @@
     </div>
     <div class="form-group">
         <label for="pwd">Điện Thoại:</label>
-        <input type="text" class="form-control nhapso" max="11" min="10" name="dt" value="">
+        <input type="text" class="form-control nhapso" maxlength="11" name="dt" value="">
     </div>
     <div class="form-group">
         <label for="pwd">CMND:</label>
-        <input type="text" class="form-control nhapso" max="9" min="9" name="cmnd" value="">
+        <input type="text" class="form-control nhapso" maxlength="9" ng-minlength="9" name="cmnd" value="">
     </div>
     <button type="submit" class="btn btn-default"> Submit</button>
 

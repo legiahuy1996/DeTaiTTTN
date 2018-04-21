@@ -41,7 +41,7 @@ namespace bananhhao.Controllers
                 Session["ThongBao"] = "Số chứng minh đã tồn tại!";
                 return View("Insert");
             }
-            else if (kh.makh.Length < 13 || kh.tenkh == null || kh.diachi == null || kh.dt == null || kh.cmnd == null && kh.cmnd.Length < 9)
+            else if (kh.makh.Length < 13 || kh.tenkh == null || kh.diachi == null || kh.dt == null || kh.cmnd == null || kh.cmnd.Length != 9)
             {
                 Session["ThongBao"] = "Có lỗi khi thêm khách hàng";
                 return View("Insert");
@@ -78,7 +78,7 @@ namespace bananhhao.Controllers
             try
             {
                
-                if (makh.Length < 13 || tenkh == null || diachi == null || dienthoai == null || cmnd.Length == 0 && cmnd.Length != 9)
+                if (makh.Length < 13 || tenkh == null || diachi == null || dienthoai == null || cmnd.Length == 0 || cmnd.Length != 9)
                 {
                     Session["ThongBao"] = "Có lỗi khi sửa khách hàng";
                     return RedirectToAction("Edit", new { id = makh });
